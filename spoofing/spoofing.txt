@@ -1,1 +1,21 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+Session Hijacking Risk due to Predictable Session Secret: In insecure.js, the session secret is hardcoded as "SOMESECRET," making it susceptible to brute-force attacks. An attacker could potentially predict or discover the session secret and use it to generate valid session tokens, thereby hijacking user sessions.
+
+Prevention in Secure Version: secure.js prevents this by requiring the session secret to be dynamically passed at runtime (process.argv[2]). This approach ensures that the secret is not exposed in the codebase and can be changed regularly or kept secret, significantly reducing the risk of session hijacking.
+Cross-Site Scripting (XSS) Risk due to Cookie Configuration: The configuration of the session cookie in insecure.js sets httpOnly to false, which means that the cookie can be accessed by client-side JavaScript. This setup is vulnerable to XSS attacks, where an attacker injects malicious scripts into the web application to steal session cookies and impersonate the user.
+
+Prevention in Secure Version: In secure.js, the cookie is configured with httpOnly: true, preventing access to the cookie via client-side scripts. This mitigates the risk of XSS attacks by ensuring that even if an attacker can inject malicious scripts, they cannot directly access the session cookie to steal user sessions.
+Cross-Site Request Forgery (CSRF) Risk: The original insecure.js file does not implement any CSRF protections, which could allow an attacker to trick a user into submitting a request to the application without their knowledge or consent.
+
+Prevention in Secure Version: By setting the sameSite attribute to true in the session cookie configuration (secure.js), the application limits the cookie's usage to first-party contexts only. This means the cookie won't be sent along with requests initiated by third-party websites, thereby mitigating the risk of CSRF attacks.
+
+Which CIA properties do you think Spoofing violates？
+Spoofing primarily violates the Authenticity aspect of the CIA (Confidentiality, Integrity, and Availability) triad. The CIA triad is a well-known model for guiding policies for information security within an organization. 
+Authenticity, though not explicitly part of the CIA triad, is often considered an essential aspect of security. It pertains to verifying that users or entities are who they claim to be. 
+Spoofing directly attacks authenticity by falsifying the identity of entities in a network, making systems or individuals believe they are interacting with a legitimate source when, in fact, they are not. 
+This can lead to breaches of confidentiality and integrity by exploiting the trust established through authentication mechanisms.
+
+
+
+
+

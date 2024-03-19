@@ -1,0 +1,20 @@
+Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+The vulnerability in the insecure version lies in how user input is handled within the /register endpoint. 
+The code directly assigns user input from req.body.name to req.session.user without sanitizing or escaping the input. 
+This practice opens the door to Cross-Site Scripting (XSS) attacks, where an attacker could inject malicious scripts through the form input. 
+These scripts could then be executed in the browser of anyone viewing the affected data, potentially leading to unauthorized access to session cookies or other sensitive actions performed on behalf of the user.
+
+The secure version addresses this vulnerability by sanitizing the user input before assigning it to the session. It uses a function, escapeHTML, to replace characters in the user input that have special significance in HTML (like <, >, &, ", and ') 
+with their respective HTML entities. This process effectively neutralizes any potential malicious scripts, preventing them from being executed in the browser. By ensuring that the input is safe to display, the secure version mitigates the risk of XSS attacks.
+
+By properly escaping user input, the secure version prevents malicious users from injecting executable scripts, thus protecting the application and its users from XSS attacks.
+
+
+Which CIA property does tampering violate?
+Tampering violates the "Integrity" aspect of the CIA (Confidentiality, Integrity, Availability) triad.
+Integrity refers to the assurance that data is accurate and has not been altered or destroyed in an unauthorized manner. Tampering with data undermines this assurance by modifying data in ways that are not permitted, unauthorized, or unexpected, thus compromising the data's integrity.
+
+
+
+
+
