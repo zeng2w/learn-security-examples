@@ -1,0 +1,7 @@
+-- Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+Only logged-in users can attempt to change roles, as verified by the presence of userId in the session.
+Only users with an 'admin' role, verified through session information and not merely request data, can change a user's role.
+
+-- What additional security mechanisms can you incorporate to prevent such attacks?
+1. Input Validation and Sanitization: Always validate and sanitize inputs to prevent injection attacks, ensuring that only properly formatted data is processed.
+2. Security Headers: Use HTTP security headers such as Content Security Policy (CSP) and X-Frame-Options to protect against common web vulnerabilities.

@@ -1,2 +1,7 @@
 - Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+Validating input data to ensure it matches the expected format and type before processing. For IDs, this often means verifying the input matches a valid ObjectId format.
+Sanitizing input data to remove or escape characters that could be used in injection attacks.
+
 - What additional security mechanisms can you incorporate to prevent such attacks?
+1. Enable Rate Limiting: Protects against brute-force attacks by limiting the number of requests a user can make to the application within a specified timeframe.
+2. Adopt Two-Factor Authentication (2FA): Adds an additional layer of security by requiring users to provide two forms of identification before gaining access.

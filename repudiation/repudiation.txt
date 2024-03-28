@@ -1,2 +1,8 @@
 - Briefly explain the vulnerability and why the secure version is better at preventing repudiation than the insecure version.
+1. Logging Requests and Actions: Every request and specific actions like sending messages are logged with timestamps and user information. This provides an audit trail that can be used to verify who performed what action and when​​.
+2. Simulating Authentication for Message Retrieval: It introduces a simulated authentication check for retrieving messages, hinting at how actual authentication mechanisms can further secure actions and ensure that only authorized users perform certain operations​​.
+
 - What additional security mechanisms can you incorporate to prevent such attacks?
+1. User Action Confirmation: For critical actions, require users to confirm their actions through an additional step (e.g., a confirmation email or SMS) to provide an extra layer of evidence.
+2. Role-Based Access Control (RBAC): Implement RBAC to ensure that users can only perform actions that are appropriate for their roles, reducing the risk of unauthorized actions.
+3. Secure Audit Trails: Protect logs and audit trails from unauthorized access and tampering. Consider using immutable logging solutions or write-once-read-many (WORM) storage for critical logs.

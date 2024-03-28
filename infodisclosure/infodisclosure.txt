@@ -1,3 +1,11 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
-Which CIA property does tampering violate?
+It first checks if the input username is of the type string, ensuring that the expected data type is received.
+It then sanitizes the username input by removing non-alphanumeric characters, which effectively prevents the possibility of injecting malicious code into the database query.
+
+Which CIA property does Information Disclosure violate?
+The vulnerability of Information Disclosure violates the Confidentiality property of the CIA triad. 
+Confidentiality ensures that data is accessed only by authorized individuals. When an application is vulnerable to information disclosure through attacks like NoSQL injection, it can lead to unauthorized access to sensitive information, thus breaching confidentiality.
+
 What additional security mechanisms can you incorporate?
+1.Implement Stronger Input Validation: Use comprehensive validation libraries or frameworks to ensure that all inputs conform to expected formats, beyond simple type checks and sanitization.
+2.Use Prepared Statements/Parameterized Queries: Although more relevant to SQL databases, the principle of separating code from data can be applied to NoSQL databases as well, ensuring that user input cannot alter the structure of queries.
